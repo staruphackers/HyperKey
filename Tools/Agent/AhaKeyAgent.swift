@@ -2,7 +2,7 @@ import CoreBluetooth
 import Foundation
 import os.log
 
-private let log = Logger(subsystem: "lab.jawa.ahakeyconfig.agent", category: "BLE")
+private let log = Logger(subsystem: "tw.xlabs.hyperkey.agent", category: "BLE")
 
 /// 设备 8 字节状态解析结果。
 ///
@@ -49,7 +49,7 @@ final class AhaKeyAgent: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     /// 持久化到 UserDefaults 以便 agent 重启后保留。物理拨杆损坏的用户靠这个让 hook 自动批准生效。
     private(set) var userSwitchOverride: UInt8?
 
-    private static let switchOverrideDefaultsKey = "lab.jawa.ahakeyconfig.agent.userSwitchOverride"
+    private static let switchOverrideDefaultsKey = "tw.xlabs.hyperkey.agent.userSwitchOverride"
 
     /// 等待下一次 status 回包的回调队列（用于 querySwitchState）
     private var statusWaiters: [(AgentDeviceStatus?) -> Void] = []
@@ -75,7 +75,7 @@ final class AhaKeyAgent: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
 
     var onLog: ((String) -> Void)?
 
-    init(socketPath: String = "/tmp/ahakey.sock") {
+    init(socketPath: String = "/tmp/hyperkey.sock") {
         self.socketPath = socketPath
         if let raw = UserDefaults.standard.object(forKey: Self.switchOverrideDefaultsKey) as? Int {
             userSwitchOverride = UInt8(clamping: raw)
@@ -133,7 +133,7 @@ final class AhaKeyAgent: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
                                switchState: UInt8? = nil,
                                workMode: UInt8? = nil) {
         let dir = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig", isDirectory: true)
+            .appendingPathComponent("Library/Application Support/HyperKey", isDirectory: true)
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         let url = dir.appendingPathComponent("current-ide-state.json")
         var obj: [String: Any] = [:]
@@ -290,7 +290,7 @@ final class AhaKeyAgent: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     ///
     /// 协议：
     /// - JSON 一行：`{"cmd":"state","value":3}` / `{"cmd":"permission","value":1}` / `{"cmd":"status"}`
-    /// - 纯数字（兼容旧 `ahakey-state.sh`）：`3` → sendState(3)，不回包
+    /// - 纯数字（兼容旧 `hyperkey-state.sh`）：`3` → sendState(3)，不回包
     private func handleClient(_ clientFd: Int32) {
         var buf = [UInt8](repeating: 0, count: 1024)
         let n = read(clientFd, &buf, buf.count)

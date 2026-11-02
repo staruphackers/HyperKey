@@ -785,7 +785,7 @@ struct AhaKeyStudioView: View {
                             Text(String(localized: "text.1e3975f890bc", defaultValue: "Typeless / 微信语音 / 豆包输入法使用 F19 触发，并注入 Fn 按住/松开。"))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
-                            Text(String(localized: "text.535028edfa7e", defaultValue: "排查请看 voice-relay.log（matched · function relay · post fn）。路径：~/Library/Application Support/AhaKeyConfig/diagnostics/"))
+                            Text(String(localized: "text.535028edfa7e", defaultValue: "排查请看 voice-relay.log（matched · function relay · post fn）。路径：~/Library/Application Support/HyperKey/diagnostics/"))
                                 .font(.caption2)
                                 .foregroundStyle(.tertiary)
                             Button(String(localized: "text.53743dbf4834", defaultValue: "模拟按一次语音键")) {
@@ -1604,7 +1604,7 @@ struct AhaKeyStudioView: View {
                             .help(
                                 agentManager.bluetoothConnectionOwner == .ahaKeyStudio
                                 ? String(localized: "text.5273a691e14a", defaultValue: "当前由本 App 占用蓝牙。请打开下方「设备信息…」，在「蓝牙连接」里选「由 Agent 占用」后再启 Agent；与设备信息里「启动」按钮规则一致。")
-                                : String(localized: "text.ff726e02e183", defaultValue: "与「设备信息 · Agent」中的启动相同，由 launchd 加载并执行 ahakeyconfig-agent。")
+                                : String(localized: "text.ff726e02e183", defaultValue: "与「设备信息 · Agent」中的启动相同，由 launchd 加载并执行 hyperkey-agent。")
                             )
                         }
                         Button(String(localized: "text.14cc6eb61a5f", defaultValue: "设备信息（蓝牙 / 启停 Agent）…")) {
@@ -4994,7 +4994,7 @@ private struct DiagnosticsTopicView: View {
 
             HelpSection(title: String(localized: "text.58ff127f773c", defaultValue: "权限清单"), body: String(localized: "text.16aa35a929fa", defaultValue: "• 蓝牙：连接键盘必须\n• 麦克风：苹果原生转写、AhaType、按住说话所有语音功能都需要\n• 输入监控：捕获语音键的按下/松开事件\n• 辅助功能：模拟键盘按键（用于 ⌘V 写回文本、注入 Fn/Globe 等）\n• 语音识别：苹果原生转写\n• Siri 与听写（macOS 13+）：原生转写依赖项"))
 
-            HelpSection(title: String(localized: "text.19d2e999dd9e", defaultValue: "Agent 健康检查"), body: String(localized: "text.74f2ce67ddc5", defaultValue: "打开「权限诊断」可以看到 Agent 自检结果：\n• LaunchAgent 已注册：login item 装好\n• 进程在跑：launchd 拉起了 ahakeyconfig-agent\n• Hook 已配置：Claude/Cursor/Codex/Kimi 的 .json / settings 都加好了 ahakey-hook 引用"))
+            HelpSection(title: String(localized: "text.19d2e999dd9e", defaultValue: "Agent 健康检查"), body: String(localized: "text.74f2ce67ddc5", defaultValue: "打开「权限诊断」可以看到 Agent 自检结果：\n• LaunchAgent 已注册：login item 装好\n• 进程在跑：launchd 拉起了 hyperkey-agent\n• Hook 已配置：Claude/Cursor/Codex/Kimi 的 .json / settings 都加好了 ahakey-hook 引用"))
 
             HelpSection(title: String(localized: "text.f9e119eba10a", defaultValue: "转写测试在哪"), body: String(localized: "text.a39faa338573", defaultValue: "权限诊断弹窗里。可以不连键盘就验证 macOS 原生转写是否能识别。如果转写失败，多半是麦克风权限或没装语言模型（系统设置 → Siri 与听写 → 听写语言）。"))
         }

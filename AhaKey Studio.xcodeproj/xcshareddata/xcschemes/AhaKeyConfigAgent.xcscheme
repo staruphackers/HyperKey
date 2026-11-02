@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB3D67C20D3982E6529EA518"
-               BuildableName = "ahakeyconfig-agent"
+               BuildableName = "hyperkey-agent"
                BlueprintName = "AhaKeyConfigAgent"
                ReferencedContainer = "container:AhaKey Studio.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB3D67C20D3982E6529EA518"
-            BuildableName = "ahakeyconfig-agent"
+            BuildableName = "hyperkey-agent"
             BlueprintName = "AhaKeyConfigAgent"
             ReferencedContainer = "container:AhaKey Studio.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB3D67C20D3982E6529EA518"
-            BuildableName = "ahakeyconfig-agent"
+            BuildableName = "hyperkey-agent"
             BlueprintName = "AhaKeyConfigAgent"
             ReferencedContainer = "container:AhaKey Studio.xcodeproj">
          </BuildableReference>

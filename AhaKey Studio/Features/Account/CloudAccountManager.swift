@@ -16,10 +16,10 @@ final class CloudAccountManager: ObservableObject {
     @Published var alertMessage: String?
 
     private let fallbackAPIBase = "https://956798.xyz/prod-api"
-    private let tokenKey = "lab.jawa.ahakeyconfig.cloud.accessToken"
-    private let rememberKey = "lab.jawa.ahakeyconfig.cloud.remember"
-    private let phoneKey = "lab.jawa.ahakeyconfig.cloud.phone"
-    private let passwordKey = "lab.jawa.ahakeyconfig.cloud.password"
+    private let tokenKey = "tw.xlabs.hyperkey.cloud.accessToken"
+    private let rememberKey = "tw.xlabs.hyperkey.cloud.remember"
+    private let phoneKey = "tw.xlabs.hyperkey.cloud.phone"
+    private let passwordKey = "tw.xlabs.hyperkey.cloud.password"
 
     private init() {
         let defaults = UserDefaults.standard

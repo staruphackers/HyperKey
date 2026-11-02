@@ -89,7 +89,7 @@ struct DeviceInfoView: View {
             .alert(String(localized: "text.4a95dc511fd6", defaultValue: "需要先安装 Agent"), isPresented: $showAgentRequiredForAgentBLE) {
                 Button(String(localized: "text.f867f3417859", defaultValue: "好"), role: .cancel) {}
             } message: {
-                Text(String(localized: "text.99ba5aace416", defaultValue: "将蓝牙交给 `ahakeyconfig-agent` 前，请先在下方完成「安装并启用」，生成 LaunchAgent。"))
+                Text(String(localized: "text.99ba5aace416", defaultValue: "将蓝牙交给 `hyperkey-agent` 前，请先在下方完成「安装并启用」，生成 LaunchAgent。"))
             }
 
             // MARK: - 拨杆状态
@@ -218,10 +218,10 @@ struct DeviceInfoView: View {
                 Text(String(localized: "text.3998f1402f57", defaultValue: "LED 状态同步 · Hook 联动"))
             } footer: {
                 if !agentManager.isAgentBinaryPresentInBundle {
-                    Text(String(localized: "text.7454a4058617", defaultValue: "发版包内未包含 ahakeyconfig-agent，无法使用守护进程。请用完整「AhaKey Studio.app」或联系开发者。"))
+                    Text(String(localized: "text.7454a4058617", defaultValue: "发版包内未包含 hyperkey-agent，无法使用守护进程。请用完整「AhaKey Studio.app」或联系开发者。"))
                         .foregroundStyle(.orange)
                 } else if agentManager.isInstalled, agentManager.bluetoothConnectionOwner == .ahaKeyStudio, !agentManager.isRunning {
-                    Text(String(localized: "text.7e7c6026b367", defaultValue: "已由本 App 占用蓝牙：要让 Agent 接管，请将「蓝牙连接」选为 ahakeyconfig-agent。"))
+                    Text(String(localized: "text.7e7c6026b367", defaultValue: "已由本 App 占用蓝牙：要让 Agent 接管，请将「蓝牙连接」选为 hyperkey-agent。"))
                         .foregroundStyle(.secondary)
                 }
             }
@@ -234,7 +234,7 @@ struct DeviceInfoView: View {
                         Button(String(localized: "text.3fd47edce45b", defaultValue: "关闭")) { showAgentLog = false }
                     }
                     Picker(String(localized: "text.7a688306423b", defaultValue: "内容"), selection: $agentLogPanel) {
-                        Text(String(localized: "text.aad4719b1caf", defaultValue: "ahakeyconfig-agent 主日志")).tag(0)
+                        Text(String(localized: "text.aad4719b1caf", defaultValue: "hyperkey-agent 主日志")).tag(0)
                         Text(String(localized: "text.77ff03a2c75d", defaultValue: "工具批准（permission-request.log）")).tag(1)
                         Text("~/.cursor/hooks.json").tag(2)
                         Text("~/.cursor/cli-config.json").tag(3)
@@ -364,7 +364,7 @@ struct DeviceInfoView: View {
                         .buttonStyle(.bordered)
                         .disabled(bleManager.isScanning || agentManager.bluetoothConnectionOwner == .agentDaemon)
                         .help(agentManager.bluetoothConnectionOwner == .agentDaemon
-                              ? String(localized: "text.cb22b76447bd", defaultValue: "当前选择由 ahakeyconfig-agent 占用蓝牙。请先在上方「蓝牙连接」切到 AhaKey Studio，或点击顶栏「设备信息 · Agent」切换。")
+                              ? String(localized: "text.cb22b76447bd", defaultValue: "当前选择由 hyperkey-agent 占用蓝牙。请先在上方「蓝牙连接」切到 AhaKey Studio，或点击顶栏「设备信息 · Agent」切换。")
                               : String(localized: "text.51a2114fc5c8", defaultValue: "本 App 主动连接键盘。"))
                     } else {
                         Button(String(localized: "text.8f0a33b3350f", defaultValue: "查询状态")) {

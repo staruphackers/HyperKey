@@ -6,7 +6,7 @@ import CoreGraphics
 import Foundation
 import os.log
 
-private let voiceRelayLog = Logger(subsystem: "lab.jawa.ahakeyconfig", category: "VoiceRelay")
+private let voiceRelayLog = Logger(subsystem: "tw.xlabs.hyperkey", category: "VoiceRelay")
 
 private struct VoiceTriggerBinding: Hashable {
     let keyCode: CGKeyCode
@@ -62,7 +62,7 @@ final class VoiceRelayService: ObservableObject {
     @Published private(set) var lastPermissionCheckSummary = String(localized: "text.a5d82baddaff", defaultValue: "尚未检查权限。")
     @Published private(set) var lastInspectorSimulateHint: String?
 
-    private let routeQueue = DispatchQueue(label: "lab.jawa.ahakeyconfig.voiceRelay.routes")
+    private let routeQueue = DispatchQueue(label: "tw.xlabs.hyperkey.voiceRelay.routes")
     private var routes: [VoiceRoute] = []
     /// 与键盘物理档位一致，用于多个 Mode 共用同一触发键（如 F18 / F19）时选对路由。
     private var keyboardWorkMode: AhaKeyModeSlot = .mode0
@@ -772,7 +772,7 @@ final class VoiceRelayService: ObservableObject {
 
     private var diagnosticLogURL: URL {
         let directory = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/diagnostics", isDirectory: true)
+            .appendingPathComponent("Library/Application Support/HyperKey/diagnostics", isDirectory: true)
         return directory.appendingPathComponent("voice-relay.log")
     }
 }

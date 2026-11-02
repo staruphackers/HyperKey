@@ -2,7 +2,7 @@ import AhaKeyPluginKit
 import Foundation
 
 // AhaKey Plugin demo executable —— 把 `AhaKeyPluginKit` 当 SDK 走一遍 manager 流程：
-//   1. 扫描 `~/Library/Application Support/AhaKeyConfig/plugins/`
+//   1. 扫描 `~/Library/Application Support/HyperKey/plugins/`
 //      （或环境变量 `AHAKEY_PLUGINS_DIR` 指定的目录）
 //   2. 按 manifest 拉起每个插件 + 握手
 //   3. 列出加载结果

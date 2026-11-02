@@ -218,25 +218,25 @@
       }
     },
     "text.00430b9bc441": {
-      "comment": "AgentManager — 在 %@ 中**未发现**包含 `ahakeyconfig-agent` 或 `ahakey-state` 的 `command`。\n\n若 Hook 在**项目级** `.cursor/hooks.json`，请在该仓库内手动删除；本按钮只改用户级 `~/.cursor/hooks.json`。",
+      "comment": "AgentManager — 在 %@ 中**未发现**包含 `hyperkey-agent` 或 `ahakey-state` 的 `command`。\n\n若 Hook 在**项目级** `.cursor/hooks.json`，请在该仓库内手动删除；本按钮只改用户级 `~/.cursor/hooks.json`。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在 %@ 中**未发现**包含 `ahakeyconfig-agent` 或 `ahakey-state` 的 `command`。\n\n若 Hook 在**项目级** `.cursor/hooks.json`，请在该仓库内手动删除；本按钮只改用户级 `~/.cursor/hooks.json`。"
+            "value": "在 %@ 中**未发现**包含 `hyperkey-agent` 或 `ahakey-state` 的 `command`。\n\n若 Hook 在**项目级** `.cursor/hooks.json`，请在该仓库内手动删除；本按钮只改用户级 `~/.cursor/hooks.json`。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No command containing ahakeyconfig-agent or ahakey-state found in %@.\n\nIf hooks are in a project's .cursor/hooks.json, remove them there. This button only updates ~/.cursor/hooks.json."
+            "value": "No command containing hyperkey-agent or ahakey-state found in %@.\n\nIf hooks are in a project's .cursor/hooks.json, remove them there. This button only updates ~/.cursor/hooks.json."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ 内に `ahakeyconfig-agent` または `ahakey-state` を含む `command` は**見つかりませんでした**。\n\nHookが**プロジェクトレベル**の `.cursor/hooks.json` にある場合は、そのリポジトリ内で手動で削除してください。このボタンはユーザーレベルの `~/.cursor/hooks.json` のみ変更します。"
+            "value": "%@ 内に `hyperkey-agent` または `ahakey-state` を含む `command` は**見つかりませんでした**。\n\nHookが**プロジェクトレベル**の `.cursor/hooks.json` にある場合は、そのリポジトリ内で手動で削除してください。このボタンはユーザーレベルの `~/.cursor/hooks.json` のみ変更します。"
           }
         }
       }
@@ -7016,25 +7016,25 @@
       }
     },
     "text.4aa536aa1af7": {
-      "comment": "AgentManager — 应用包内没有可执行的 ahakeyconfig-agent（路径：…/Contents/MacOS/ahakeyconfig-agent）。请确认发版脚本已把该二进制一并打进 .app；仅有主程序时无法安装守护进程。",
+      "comment": "AgentManager — 应用包内没有可执行的 hyperkey-agent（路径：…/Contents/MacOS/hyperkey-agent）。请确认发版脚本已把该二进制一并打进 .app；仅有主程序时无法安装守护进程。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "应用包内没有可执行的 ahakeyconfig-agent（路径：…/Contents/MacOS/ahakeyconfig-agent）。请确认发版脚本已把该二进制一并打进 .app；仅有主程序时无法安装守护进程。"
+            "value": "应用包内没有可执行的 hyperkey-agent（路径：…/Contents/MacOS/hyperkey-agent）。请确认发版脚本已把该二进制一并打进 .app；仅有主程序时无法安装守护进程。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The app bundle has no executable ahakeyconfig-agent at Contents/MacOS/ahakeyconfig-agent. Install the full app containing this binary; the main executable alone cannot install the daemon."
+            "value": "The app bundle has no executable hyperkey-agent at Contents/MacOS/hyperkey-agent. Install the full app containing this binary; the main executable alone cannot install the daemon."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アプリケーションパッケージ内に実行可能な ahakeyconfig-agent（パス：…/Contents/MacOS/ahakeyconfig-agent）はありません。配布スクリプトが当該バイナリを .app に同時に書き込んだことを確認してください。メインプログラムが起動していない場合、ガードプロセスをインストールできません。"
+            "value": "アプリケーションパッケージ内に実行可能な hyperkey-agent（パス：…/Contents/MacOS/hyperkey-agent）はありません。配布スクリプトが当該バイナリを .app に同時に書き込んだことを確認してください。メインプログラムが起動していない場合、ガードプロセスをインストールできません。"
           }
         }
       }
@@ -7688,25 +7688,25 @@
       }
     },
     "text.535028edfa7e": {
-      "comment": "AhaKeyStudioView — 排查请看 voice-relay.log（matched · function relay · post fn）。路径：~/Library/Application Support/AhaKeyConfig/diagnostics/",
+      "comment": "AhaKeyStudioView — 排查请看 voice-relay.log（matched · function relay · post fn）。路径：~/Library/Application Support/HyperKey/diagnostics/",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "排查请看 voice-relay.log（matched · function relay · post fn）。路径：~/Library/Application Support/AhaKeyConfig/diagnostics/"
+            "value": "排查请看 voice-relay.log（matched · function relay · post fn）。路径：~/Library/Application Support/HyperKey/diagnostics/"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Check voice-relay.log (matched · function relay · post fn). Location: ~/Library/Application Support/AhaKeyConfig/diagnostics/"
+            "value": "Check voice-relay.log (matched · function relay · post fn). Location: ~/Library/Application Support/HyperKey/diagnostics/"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "調査はvoice-relay.log（matched · function relay · post fn）をご覧ください。パス：~/Library/Application Support/AhaKeyConfig/diagnostics/"
+            "value": "調査はvoice-relay.log（matched · function relay · post fn）をご覧ください。パス：~/Library/Application Support/HyperKey/diagnostics/"
           }
         }
       }
@@ -10640,25 +10640,25 @@
       }
     },
     "text.7454a4058617": {
-      "comment": "DeviceInfoView — 发版包内未包含 ahakeyconfig-agent，无法使用守护进程。请用完整「AhaKey Studio.app」或联系开发者。",
+      "comment": "DeviceInfoView — 发版包内未包含 hyperkey-agent，无法使用守护进程。请用完整「AhaKey Studio.app」或联系开发者。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "发版包内未包含 ahakeyconfig-agent，无法使用守护进程。请用完整「AhaKey Studio.app」或联系开发者。"
+            "value": "发版包内未包含 hyperkey-agent，无法使用守护进程。请用完整「AhaKey Studio.app」或联系开发者。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This build does not include ahakeyconfig-agent. Install the complete AhaKey Studio.app or contact the developer."
+            "value": "This build does not include hyperkey-agent. Install the complete AhaKey Studio.app or contact the developer."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "配布パッケージにはahakeyconfig-agentが含まれておらず、ガードプロセスを使用できません。完全な「AhaKey Studio.app」をご利用いただくか、開発者にお問い合わせください。"
+            "value": "配布パッケージにはhyperkey-agentが含まれておらず、ガードプロセスを使用できません。完全な「AhaKey Studio.app」をご利用いただくか、開発者にお問い合わせください。"
           }
         }
       }
@@ -10736,25 +10736,25 @@
       }
     },
     "text.74f2ce67ddc5": {
-      "comment": "AhaKeyStudioView — 打开「权限诊断」可以看到 Agent 自检结果：\n• LaunchAgent 已注册：login item 装好\n• 进程在跑：launchd 拉起了 ahakeyconfig-agent\n• Hook 已配置：Claude/Cursor/Codex/Kimi 的 .json / settings 都加好了 ahakey-hook 引用",
+      "comment": "AhaKeyStudioView — 打开「权限诊断」可以看到 Agent 自检结果：\n• LaunchAgent 已注册：login item 装好\n• 进程在跑：launchd 拉起了 hyperkey-agent\n• Hook 已配置：Claude/Cursor/Codex/Kimi 的 .json / settings 都加好了 ahakey-hook 引用",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "打开「权限诊断」可以看到 Agent 自检结果：\n• LaunchAgent 已注册：login item 装好\n• 进程在跑：launchd 拉起了 ahakeyconfig-agent\n• Hook 已配置：Claude/Cursor/Codex/Kimi 的 .json / settings 都加好了 ahakey-hook 引用"
+            "value": "打开「权限诊断」可以看到 Agent 自检结果：\n• LaunchAgent 已注册：login item 装好\n• 进程在跑：launchd 拉起了 hyperkey-agent\n• Hook 已配置：Claude/Cursor/Codex/Kimi 的 .json / settings 都加好了 ahakey-hook 引用"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permission Diagnostics shows Agent health:\n• LaunchAgent registered: login job installed\n• Process running: launchd started ahakeyconfig-agent\n• Hooks configured: Claude/Cursor/Codex/Kimi settings include AhaKey hooks"
+            "value": "Permission Diagnostics shows Agent health:\n• LaunchAgent registered: login job installed\n• Process running: launchd started hyperkey-agent\n• Hooks configured: Claude/Cursor/Codex/Kimi settings include AhaKey hooks"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "「権限診断」を開くと、Agentの自己診断結果が表示されます：\n\n• LaunchAgent は登録済み：login item を準備しました\n\n• プロセスが実行中：launchdがahakeyconfig-agentを開始しました\n\n• Hook は既に設定済み：Claude/Cursor/Codex/Kimi の .json / settings に ahakey-hook の引用を追加しました。"
+            "value": "「権限診断」を開くと、Agentの自己診断結果が表示されます：\n\n• LaunchAgent は登録済み：login item を準備しました\n\n• プロセスが実行中：launchdがhyperkey-agentを開始しました\n\n• Hook は既に設定済み：Claude/Cursor/Codex/Kimi の .json / settings に ahakey-hook の引用を追加しました。"
           }
         }
       }
@@ -11750,25 +11750,25 @@
       }
     },
     "text.7e7c6026b367": {
-      "comment": "DeviceInfoView — 已由本 App 占用蓝牙：要让 Agent 接管，请将「蓝牙连接」选为 ahakeyconfig-agent。",
+      "comment": "DeviceInfoView — 已由本 App 占用蓝牙：要让 Agent 接管，请将「蓝牙连接」选为 hyperkey-agent。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已由本 App 占用蓝牙：要让 Agent 接管，请将「蓝牙连接」选为 ahakeyconfig-agent。"
+            "value": "已由本 App 占用蓝牙：要让 Agent 接管，请将「蓝牙连接」选为 hyperkey-agent。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This app owns Bluetooth. Select ahakeyconfig-agent under Bluetooth Connection to hand it over."
+            "value": "This app owns Bluetooth. Select hyperkey-agent under Bluetooth Connection to hand it over."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "本アプリがBluetoothを占有しています：Agentに管理を任せるには、「Bluetooth接続」をahakeyconfig-agentに選択してください。"
+            "value": "本アプリがBluetoothを占有しています：Agentに管理を任せるには、「Bluetooth接続」をhyperkey-agentに選択してください。"
           }
         }
       }
@@ -12086,25 +12086,25 @@
       }
     },
     "text.821bcb2e4f27": {
-      "comment": "AhaKeyBLEManager — 蓝牙当前交由 ahakeyconfig-agent 占用，本 App 不直接连接（这是预期行为）。配置链路状态请参考 Agent；如需本 App 直连，请在设备信息里把「蓝牙连接」切回本 App。",
+      "comment": "AhaKeyBLEManager — 蓝牙当前交由 hyperkey-agent 占用，本 App 不直接连接（这是预期行为）。配置链路状态请参考 Agent；如需本 App 直连，请在设备信息里把「蓝牙连接」切回本 App。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "蓝牙当前交由 ahakeyconfig-agent 占用，本 App 不直接连接（这是预期行为）。配置链路状态请参考 Agent；如需本 App 直连，请在设备信息里把「蓝牙连接」切回本 App。"
+            "value": "蓝牙当前交由 hyperkey-agent 占用，本 App 不直接连接（这是预期行为）。配置链路状态请参考 Agent；如需本 App 直连，请在设备信息里把「蓝牙连接」切回本 App。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "ahakeyconfig-agent owns Bluetooth, so this app does not connect directly. Refer to Agent status. To connect directly, choose this app under Bluetooth Connection in Device Information."
+            "value": "hyperkey-agent owns Bluetooth, so this app does not connect directly. Refer to Agent status. To connect directly, choose this app under Bluetooth Connection in Device Information."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bluetoothは現在 ahakeyconfig-agent に占有されています。本アプリは直接接続しません（これは予想される動作です）。設定リンクの状態はAgentを参照してください。本アプリに直接接続が必要な場合は、デバイス情報で「Bluetooth接続」を本アプリに戻してください。"
+            "value": "Bluetoothは現在 hyperkey-agent に占有されています。本アプリは直接接続しません（これは予想される動作です）。設定リンクの状態はAgentを参照してください。本アプリに直接接続が必要な場合は、デバイス情報で「Bluetooth接続」を本アプリに戻してください。"
           }
         }
       }
@@ -13958,25 +13958,25 @@
       }
     },
     "text.99ba5aace416": {
-      "comment": "DeviceInfoView — 将蓝牙交给 `ahakeyconfig-agent` 前，请先在下方完成「安装并启用」，生成 LaunchAgent。",
+      "comment": "DeviceInfoView — 将蓝牙交给 `hyperkey-agent` 前，请先在下方完成「安装并启用」，生成 LaunchAgent。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "将蓝牙交给 `ahakeyconfig-agent` 前，请先在下方完成「安装并启用」，生成 LaunchAgent。"
+            "value": "将蓝牙交给 `hyperkey-agent` 前，请先在下方完成「安装并启用」，生成 LaunchAgent。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Before handing Bluetooth to ahakeyconfig-agent, select Install and Enable below to create its LaunchAgent."
+            "value": "Before handing Bluetooth to hyperkey-agent, select Install and Enable below to create its LaunchAgent."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bluetoothを`ahakeyconfig-agent`に渡す前に、まず以下の「インストールして有効化」を完了し、LaunchAgentを生成してください。"
+            "value": "Bluetoothを`hyperkey-agent`に渡す前に、まず以下の「インストールして有効化」を完了し、LaunchAgentを生成してください。"
           }
         }
       }
@@ -15710,25 +15710,25 @@
       }
     },
     "text.aad4719b1caf": {
-      "comment": "DeviceInfoView — ahakeyconfig-agent 主日志",
+      "comment": "DeviceInfoView — hyperkey-agent 主日志",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "ahakeyconfig-agent 主日志"
+            "value": "hyperkey-agent 主日志"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "ahakeyconfig-agent main log"
+            "value": "hyperkey-agent main log"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ahakeyconfig-agent 主ログ"
+            "value": "hyperkey-agent 主ログ"
           }
         }
       }
@@ -17498,25 +17498,25 @@
       }
     },
     "text.bdd1bbea1698": {
-      "comment": "AgentManager — 尚无记录。在 Claude 中触发 PermissionRequest，在 Cursor 中让 Agent 调工具/Shell/MCP，或在 Kimi Code CLI 中触发工具调用后，会在此追加带 `ide` / `hookEvent` 的 JSON 行。若始终为空，请确认已安装 Agent、Hooks、蓝牙由 Agent 占用，且 `~/Library/.../AhaKeyConfig/diagnostics/` 可写。",
+      "comment": "AgentManager — 尚无记录。在 Claude 中触发 PermissionRequest，在 Cursor 中让 Agent 调工具/Shell/MCP，或在 Kimi Code CLI 中触发工具调用后，会在此追加带 `ide` / `hookEvent` 的 JSON 行。若始终为空，请确认已安装 Agent、Hooks、蓝牙由 Agent 占用，且 `~/Library/.../HyperKey/diagnostics/` 可写。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "尚无记录。在 Claude 中触发 PermissionRequest，在 Cursor 中让 Agent 调工具/Shell/MCP，或在 Kimi Code CLI 中触发工具调用后，会在此追加带 `ide` / `hookEvent` 的 JSON 行。若始终为空，请确认已安装 Agent、Hooks、蓝牙由 Agent 占用，且 `~/Library/.../AhaKeyConfig/diagnostics/` 可写。"
+            "value": "尚无记录。在 Claude 中触发 PermissionRequest，在 Cursor 中让 Agent 调工具/Shell/MCP，或在 Kimi Code CLI 中触发工具调用后，会在此追加带 `ide` / `hookEvent` 的 JSON 行。若始终为空，请确认已安装 Agent、Hooks、蓝牙由 Agent 占用，且 `~/Library/.../HyperKey/diagnostics/` 可写。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No records yet. Trigger Claude PermissionRequest, a Cursor tool/Shell/MCP call or a Kimi tool call to append JSON lines with ide / hookEvent fields. If empty, check Agent and hook installation, Agent Bluetooth ownership and write access to ~/Library/.../AhaKeyConfig/diagnostics/."
+            "value": "No records yet. Trigger Claude PermissionRequest, a Cursor tool/Shell/MCP call or a Kimi tool call to append JSON lines with ide / hookEvent fields. If empty, check Agent and hook installation, Agent Bluetooth ownership and write access to ~/Library/.../HyperKey/diagnostics/."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "まだ記録はありません。ClaudeでPermissionRequestをトリガーし、CursorでAgentにツール/Shell/MCPを操作させたり、Kimi Code CLIでツール呼び出しをトリガーした場合、ここで`ide`/`hookEvent`を含むJSON行を追加します。常に空の場合、Agent、Hooks、BluetoothがAgentによって占有されていることを確認し、`~/Library/.../AhaKeyConfig/diagnostics/`が書き込めることを確認してください。"
+            "value": "まだ記録はありません。ClaudeでPermissionRequestをトリガーし、CursorでAgentにツール/Shell/MCPを操作させたり、Kimi Code CLIでツール呼び出しをトリガーした場合、ここで`ide`/`hookEvent`を含むJSON行を追加します。常に空の場合、Agent、Hooks、BluetoothがAgentによって占有されていることを確認し、`~/Library/.../HyperKey/diagnostics/`が書き込めることを確認してください。"
           }
         }
       }
@@ -18362,25 +18362,25 @@
       }
     },
     "text.c55df9e454f9": {
-      "comment": "AgentManager — 已执行 launchctl load / start，但尚未检测到 Agent 在运行（未出现 /tmp/ahakey.sock）。\n\n",
+      "comment": "AgentManager — 已执行 launchctl load / start，但尚未检测到 Agent 在运行（未出现 /tmp/hyperkey.sock）。\n\n",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已执行 launchctl load / start，但尚未检测到 Agent 在运行（未出现 /tmp/ahakey.sock）。\n\n"
+            "value": "已执行 launchctl load / start，但尚未检测到 Agent 在运行（未出现 /tmp/hyperkey.sock）。\n\n"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Executed launchctl load / start, but the Agent is not yet running (/tmp/ahakey.sock is missing).\n\n"
+            "value": "Executed launchctl load / start, but the Agent is not yet running (/tmp/hyperkey.sock is missing).\n\n"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "launchctl load / start を実行しましたが、Agent が実行されていることがまだ検出されていません（/tmp/ahakey.sock が表示されません）。"
+            "value": "launchctl load / start を実行しましたが、Agent が実行されていることがまだ検出されていません（/tmp/hyperkey.sock が表示されません）。"
           }
         }
       }
@@ -18920,25 +18920,25 @@
       }
     },
     "text.cb22b76447bd": {
-      "comment": "DeviceInfoView — 当前选择由 ahakeyconfig-agent 占用蓝牙。请先在上方「蓝牙连接」切到 AhaKey Studio，或点击顶栏「设备信息 · Agent」切换。",
+      "comment": "DeviceInfoView — 当前选择由 hyperkey-agent 占用蓝牙。请先在上方「蓝牙连接」切到 AhaKey Studio，或点击顶栏「设备信息 · Agent」切换。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "当前选择由 ahakeyconfig-agent 占用蓝牙。请先在上方「蓝牙连接」切到 AhaKey Studio，或点击顶栏「设备信息 · Agent」切换。"
+            "value": "当前选择由 hyperkey-agent 占用蓝牙。请先在上方「蓝牙连接」切到 AhaKey Studio，或点击顶栏「设备信息 · Agent」切换。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "ahakeyconfig-agent currently owns Bluetooth. Select AhaKey Studio under Bluetooth Connection above, or open Device Information · Agent from the toolbar."
+            "value": "hyperkey-agent currently owns Bluetooth. Select AhaKey Studio under Bluetooth Connection above, or open Device Information · Agent from the toolbar."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "現在の選択は ahakeyconfig-agent によってBluetoothを占有しています。まず上部の「Bluetooth接続」でAhaKey Studioに切り替えるか、トップバーの「デバイス情報 · Agent」をクリックして切り替えてください。"
+            "value": "現在の選択は hyperkey-agent によってBluetoothを占有しています。まず上部の「Bluetooth接続」でAhaKey Studioに切り替えるか、トップバーの「デバイス情報 · Agent」をクリックして切り替えてください。"
           }
         }
       }
@@ -23708,25 +23708,25 @@
       }
     },
     "text.ff726e02e183": {
-      "comment": "AhaKeyStudioView — 与「设备信息 · Agent」中的启动相同，由 launchd 加载并执行 ahakeyconfig-agent。",
+      "comment": "AhaKeyStudioView — 与「设备信息 · Agent」中的启动相同，由 launchd 加载并执行 hyperkey-agent。",
       "extractionState": "manual",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "与「设备信息 · Agent」中的启动相同，由 launchd 加载并执行 ahakeyconfig-agent。"
+            "value": "与「设备信息 · Agent」中的启动相同，由 launchd 加载并执行 hyperkey-agent。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Starts ahakeyconfig-agent through launchd, just like Device Information · Agent."
+            "value": "Starts hyperkey-agent through launchd, just like Device Information · Agent."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "「デバイス情報・Agent」内の起動と同じように、launchdによってahakeyconfig-agentがロードされ実行されます。"
+            "value": "「デバイス情報・Agent」内の起動と同じように、launchdによってhyperkey-agentがロードされ実行されます。"
           }
         }
       }

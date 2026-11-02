@@ -1,7 +1,7 @@
 import Foundation
 
 let client = UnixDomainClient(
-    path: "/tmp/ahakey.sock",
+    path: "/tmp/hyperkey.sock",
     onMessage: { message in
         print("收到回复：\(message)")
     },

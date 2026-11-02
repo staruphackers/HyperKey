@@ -1,6 +1,6 @@
 import Foundation
 
-let server = UnixDomainServer(socketPath: "/tmp/ahakey.sock")
+let server = UnixDomainServer(socketPath: "/tmp/hyperkey.sock")
 
 do {
     try server.start()

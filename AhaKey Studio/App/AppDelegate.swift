@@ -28,7 +28,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCent
     func applicationDidFinishLaunching(_ notification: Notification) {
         guard !Self.isRunningTests else { return }
         // 单实例：检查是否已有实例在运行
-        let bundleID = Bundle.main.bundleIdentifier ?? "lab.jawa.ahakeyconfig"
+        let bundleID = Bundle.main.bundleIdentifier ?? "tw.xlabs.hyperkey"
         let currentBundlePath = Bundle.main.bundlePath
         let running = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID)
         if running.count > 1 {

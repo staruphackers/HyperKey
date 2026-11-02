@@ -84,7 +84,7 @@ Use the [greeter tutorial](typescript/README.md#create-your-own-plugin) to creat
 | [`PluginClient`](../Modules/AhaKeyPluginKit/PluginClient.swift) | Starts the process; supports `call`, `notify`, request/notification handlers, and stderr forwarding |
 | [Lifecycle helpers](../Modules/AhaKeyPluginKit/PluginLifecycle.swift) | Implements `initialize`, `sendInitialized`, and `shutdown` on the host side |
 
-The default discovery root is `~/Library/Application Support/AhaKeyConfig/plugins/`. Set `AHAKEY_PLUGINS_DIR` or pass `pluginsRoot:` to use a development directory. Place each plugin in an immediate child directory; see the [manifest reference](typescript/README.md#manifest-and-discovery).
+The default discovery root is `~/Library/Application Support/HyperKey/plugins/`. Set `AHAKEY_PLUGINS_DIR` or pass `pluginsRoot:` to use a development directory. Place each plugin in an immediate child directory; see the [manifest reference](typescript/README.md#manifest-and-discovery).
 
 `PluginManager` supplies the manifest permissions to `PluginHost`. If embedding `PluginHost` directly, pass an explicit permission set: its default `nil` value allows every registered built-in host method. Method permissions govern host RPC access; plugin processes run with the launching user's normal operating-system access.
 

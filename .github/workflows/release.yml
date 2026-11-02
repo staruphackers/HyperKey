@@ -85,8 +85,8 @@ jobs:
             "$RUNNER_TEMP/dmg-root/AhaKey Studio.app"
           app="$RUNNER_TEMP/dmg-root/AhaKey Studio.app"
           codesign --verify --deep --strict "$app"
-          lipo "$app/Contents/MacOS/AhaKeyConfig" -verify_arch arm64 x86_64
-          lipo "$app/Contents/MacOS/ahakeyconfig-agent" -verify_arch arm64 x86_64
+          lipo "$app/Contents/MacOS/HyperKey" -verify_arch arm64 x86_64
+          lipo "$app/Contents/MacOS/hyperkey-agent" -verify_arch arm64 x86_64
       - name: Create and sign DMG
         run: |
           ln -s /Applications "$RUNNER_TEMP/dmg-root/Applications"

@@ -32,7 +32,7 @@ with tempfile.TemporaryDirectory(prefix='ahakey-') as directory:
         return str(binary)
 
     client = compile_program('Examples/SocketClient/UnixDomainClient.swift',
-        (ROOT / 'Examples/SocketClient/main.swift').read_text().replace('/tmp/ahakey.sock', path), 'client')
+        (ROOT / 'Examples/SocketClient/main.swift').read_text().replace('/tmp/hyperkey.sock', path), 'client')
 
     # Verify the actual CLI sends two messages on one connection, receives split UTF-8,
     # and remains alive until the peer closes. Repeat to catch the original timing race.

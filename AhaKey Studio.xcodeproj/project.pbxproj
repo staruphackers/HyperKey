@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		22C9FBC9B669B0675798F985 /* AhaKey Studio/Resources/FirmwareFlasher/firmware/AhaKey-X1-firmware-eternal-dev-5a84c2a-1.4.6.hex in Copy FirmwareFlasher/firmware */ = {isa = PBXBuildFile; fileRef = 8538AE68B13230F86D1E4A8E /* AhaKey Studio/Resources/FirmwareFlasher/firmware/AhaKey-X1-firmware-eternal-dev-5a84c2a-1.4.6.hex */; };
 		26E2C8BFD50A453D889BF833 /* libVibeBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73B263C26A918ECA2930C0E2 /* libVibeBar.a */; };
-		3936B3D0936276A6F768BCE2 /* ahakeyconfig-agent in Embed Agent */ = {isa = PBXBuildFile; fileRef = 8650A3AD7BC9AC6DDD3C361C /* ahakeyconfig-agent */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3936B3D0936276A6F768BCE2 /* hyperkey-agent in Embed Agent */ = {isa = PBXBuildFile; fileRef = 8650A3AD7BC9AC6DDD3C361C /* hyperkey-agent */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		39C8BFD024E4D48898EC13B0 /* libVibeBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73B263C26A918ECA2930C0E2 /* libVibeBar.a */; };
 		4D15B1129B0E65626E262269 /* AhaKey Studio/Resources/Help in Resources */ = {isa = PBXBuildFile; fileRef = BEE1991A6F11B00C8331A910 /* AhaKey Studio/Resources/Help */; };
 		5F12E573214FA5FBB78562D7 /* DynamicNotchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 816943818FC024E1898AD328 /* DynamicNotchKit */; };
@@ -121,7 +121,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				3936B3D0936276A6F768BCE2 /* ahakeyconfig-agent in Embed Agent */,
+				3936B3D0936276A6F768BCE2 /* hyperkey-agent in Embed Agent */,
 			);
 			name = "Embed Agent";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,7 +146,7 @@
 		73B263C26A918ECA2930C0E2 /* libVibeBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVibeBar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		741FDD7C3C66014F456317B1 /* PluginShowcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PluginShowcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8538AE68B13230F86D1E4A8E /* AhaKey Studio/Resources/FirmwareFlasher/firmware/AhaKey-X1-firmware-eternal-dev-5a84c2a-1.4.6.hex */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AhaKey Studio/Resources/FirmwareFlasher/firmware/AhaKey-X1-firmware-eternal-dev-5a84c2a-1.4.6.hex"; sourceTree = SOURCE_ROOT; };
-		8650A3AD7BC9AC6DDD3C361C /* ahakeyconfig-agent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ahakeyconfig-agent"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8650A3AD7BC9AC6DDD3C361C /* hyperkey-agent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hyperkey-agent"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97729B04ACCA75E6377C4CBF /* Plugin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD205004FA79B8498E5029E /* AhaKey Studio/Resources/FirmwareFlasher/SOURCE_SHA256SUMS */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AhaKey Studio/Resources/FirmwareFlasher/SOURCE_SHA256SUMS"; sourceTree = SOURCE_ROOT; };
 		BC16DD8045568628A5B58F5A /* AhaKey Studio/Resources/FirmwareFlasher/THIRD_PARTY_NOTICES.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AhaKey Studio/Resources/FirmwareFlasher/THIRD_PARTY_NOTICES.md"; sourceTree = SOURCE_ROOT; };
@@ -385,7 +385,7 @@
 				DCB4E86C304846C600E702EE /* AhaKey StudioTests.xctest */,
 				117963F9C088F92069A35FC1 /* libAhaKeyPluginKit.a */,
 				73B263C26A918ECA2930C0E2 /* libVibeBar.a */,
-				8650A3AD7BC9AC6DDD3C361C /* ahakeyconfig-agent */,
+				8650A3AD7BC9AC6DDD3C361C /* hyperkey-agent */,
 				97729B04ACCA75E6377C4CBF /* Plugin */,
 				741FDD7C3C66014F456317B1 /* PluginShowcase.app */,
 				D7C36B709C6FFF8BDC61047B /* VibeBarSmoke.app */,
@@ -518,8 +518,8 @@
 			name = AhaKeyConfigAgent;
 			packageProductDependencies = (
 			);
-			productName = "ahakeyconfig-agent";
-			productReference = 8650A3AD7BC9AC6DDD3C361C /* ahakeyconfig-agent */;
+			productName = "hyperkey-agent";
+			productReference = 8650A3AD7BC9AC6DDD3C361C /* hyperkey-agent */;
 			productType = "com.apple.product-type.tool";
 		};
 		AD7B0C1F006EDC32DC3A800A /* VibeBarTests */ = {
@@ -848,7 +848,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio.VibeBarTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey.VibeBarTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -889,7 +889,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = P2VFVRZK7P;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -922,7 +922,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio.VibeBarSmoke";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey.VibeBarSmoke";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -934,7 +934,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
-				PRODUCT_NAME = "ahakeyconfig-agent";
+				PRODUCT_NAME = "hyperkey-agent";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -957,7 +957,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APP_BUNDLE_ID_SUFFIX = .debug;
-				APP_NAME_SUFFIX = "（调试）";
+				APP_NAME_SUFFIX = "（偵錯）";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -988,7 +988,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = P2VFVRZK7P;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1037,11 +1037,11 @@
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-StudioTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKeyTests";
 				PRODUCT_MODULE_NAME = AhaKeyConfigTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AhaKey Studio$(APP_NAME_SUFFIX).app/Contents/MacOS/AhaKeyConfig";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperKey$(APP_NAME_SUFFIX).app/Contents/MacOS/HyperKey";
 			};
 			name = Release;
 		};
@@ -1064,11 +1064,11 @@
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-StudioTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKeyTests";
 				PRODUCT_MODULE_NAME = AhaKeyConfigTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AhaKey Studio$(APP_NAME_SUFFIX).app/Contents/MacOS/AhaKeyConfig";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperKey$(APP_NAME_SUFFIX).app/Contents/MacOS/HyperKey";
 			};
 			name = Debug;
 		};
@@ -1095,7 +1095,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio.PluginShowcase";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey.PluginShowcase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1110,7 +1110,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio.VibeBarSmoke";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey.VibeBarSmoke";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1122,7 +1122,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
-				PRODUCT_NAME = "ahakeyconfig-agent";
+				PRODUCT_NAME = "hyperkey-agent";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1155,7 +1155,7 @@
 		EEDF5793F844FB72A1EB2F95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APP_BUNDLE_NAME = "AhaKey Studio$(APP_NAME_SUFFIX)";
+				APP_BUNDLE_NAME = "HyperKey$(APP_NAME_SUFFIX)";
 				APP_DISPLAY_NAME = "$(APP_BUNDLE_NAME)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1165,7 +1165,7 @@
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				EXECUTABLE_NAME = AhaKeyConfig;
+				EXECUTABLE_NAME = HyperKey;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(PROJECT_FILE_PATH)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1173,7 +1173,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.2.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio$(APP_BUNDLE_ID_SUFFIX)";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey$(APP_BUNDLE_ID_SUFFIX)";
 				PRODUCT_MODULE_NAME = AhaKeyConfig;
 				PRODUCT_NAME = "$(APP_BUNDLE_NAME)";
 				SKIP_INSTALL = NO;
@@ -1187,7 +1187,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio.VibeBarTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey.VibeBarTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1202,7 +1202,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio.PluginShowcase";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey.PluginShowcase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1211,7 +1211,7 @@
 		FD4A787AA0EC2C4CD4FC79D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APP_BUNDLE_NAME = "AhaKey Studio$(APP_NAME_SUFFIX)";
+				APP_BUNDLE_NAME = "HyperKey$(APP_NAME_SUFFIX)";
 				APP_DISPLAY_NAME = "$(APP_BUNDLE_NAME)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1221,7 +1221,7 @@
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				EXECUTABLE_NAME = AhaKeyConfig;
+				EXECUTABLE_NAME = HyperKey;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(PROJECT_FILE_PATH)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1229,7 +1229,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.2.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xinyangzhang.AhaKey-Studio$(APP_BUNDLE_ID_SUFFIX)";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.xlabs.HyperKey$(APP_BUNDLE_ID_SUFFIX)";
 				PRODUCT_MODULE_NAME = AhaKeyConfig;
 				PRODUCT_NAME = "$(APP_BUNDLE_NAME)";
 				SKIP_INSTALL = NO;

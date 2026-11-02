@@ -1,13 +1,13 @@
 import Foundation
 import os.log
 
-private let log = Logger(subsystem: "lab.jawa.ahakeyconfig", category: "AgentManager")
+private let log = Logger(subsystem: "tw.xlabs.hyperkey", category: "AgentManager")
 
 // MARK: - 蓝牙占用方（AhaKey Studio 与 Agent 是两套独立进程，同一时刻只应有一个 GATT 连接键盘）
 
 /// 由谁持有与键盘的 BLE 连接。
 /// - `ahaKeyStudio`：主 App 连接，用于改键、LCD、本机 LED 测试等。
-/// - `agentDaemon`：仅运行 `ahakeyconfig-agent`（Hook → Unix socket → 写 0x90 状态、读拨杆），由 LaunchAgent 拉起。
+/// - `agentDaemon`：仅运行 `hyperkey-agent`（Hook → Unix socket → 写 0x90 状态、读拨杆），由 LaunchAgent 拉起。
 enum BluetoothConnectionOwner: String, CaseIterable, Identifiable {
     case ahaKeyStudio
     case agentDaemon
@@ -17,7 +17,7 @@ enum BluetoothConnectionOwner: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .ahaKeyStudio: return "AhaKey Studio"
-        case .agentDaemon: return "ahakeyconfig-agent"
+        case .agentDaemon: return "hyperkey-agent"
         }
     }
 
@@ -29,12 +29,12 @@ enum BluetoothConnectionOwner: String, CaseIterable, Identifiable {
     }
 }
 
-/// 管理 ahakeyconfig-agent 守护进程的安装、启停、状态查询
+/// 管理 hyperkey-agent 守护进程的安装、启停、状态查询
 @MainActor
 final class AgentManager: ObservableObject {
     static let shared = AgentManager()
 
-    private static let bluetoothOwnerKey = "lab.jawa.ahakeyconfig.bluetoothConnectionOwner"
+    private static let bluetoothOwnerKey = "tw.xlabs.hyperkey.bluetoothConnectionOwner"
     private static var didApplyLaunchBluetoothPreference = false
 
     @Published private(set) var isInstalled = false
@@ -55,8 +55,8 @@ final class AgentManager: ObservableObject {
     /// 正在执行安装或 launchctl 启停，用于界面显示进度，避免「点了没反应」。
     @Published private(set) var isAgentOperationInProgress = false
 
-    private let label = "lab.jawa.ahakeyconfig.agent"
-    private let socketPath = "/tmp/ahakey.sock"
+    private let label = "tw.xlabs.hyperkey.agent"
+    private let socketPath = "/tmp/hyperkey.sock"
 
     private var launchAgentsDirectoryURL: URL {
         FileManager.default.homeDirectoryForCurrentUser
@@ -75,7 +75,7 @@ final class AgentManager: ObservableObject {
     private var agentBinaryPath: String {
         // Xcode 的 Embed Agent 构建阶段在 Debug 和 Release 中都提供此路径。
         Bundle.main.bundleURL
-            .appendingPathComponent("Contents/MacOS/ahakeyconfig-agent").path
+            .appendingPathComponent("Contents/MacOS/hyperkey-agent").path
     }
 
     /// 供界面判断：包内是否带有 agent 可执行文件（发版缺拷贝时 LaunchAgent 无法真正运行）。
@@ -86,7 +86,7 @@ final class AgentManager: ObservableObject {
     /// 兼容性：老版本通过 shell 脚本转发；现在直接调用 agent 二进制。保留路径用于卸载时清理。
     private var legacyHookScriptPath: String {
         let home = FileManager.default.homeDirectoryForCurrentUser
-        return home.appendingPathComponent(".claude/hooks/ahakey-state.sh").path
+        return home.appendingPathComponent(".claude/hooks/hyperkey-state.sh").path
     }
 
     private var claudeSettingsPath: String {
@@ -386,7 +386,7 @@ final class AgentManager: ObservableObject {
         guard let text = try? String(contentsOfFile: codexConfigPath, encoding: .utf8) else {
             return false
         }
-        // AhaKey 写入的 BEGIN/END 块即可判定（不依赖文件中是否仍能匹配到 ahakeyconfig-agent 字面量，避免因路径别名/重装 App 路径变化导致误判未装）
+        // AhaKey 写入的 BEGIN/END 块即可判定（不依赖文件中是否仍能匹配到 hyperkey-agent 字面量，避免因路径别名/重装 App 路径变化导致误判未装）
         if text.contains(codexHookBlockStart), text.contains(codexHookBlockEnd) {
             return true
         }
@@ -404,7 +404,7 @@ final class AgentManager: ObservableObject {
     }
 
     private func isAhakeyHookCommand(_ command: String) -> Bool {
-        command.contains("ahakeyconfig-agent") || command.contains("ahakey-state")
+        command.contains("hyperkey-agent") || command.contains("ahakey-state")
     }
 
     /// 真去 connect 一下 agent socket，区分「活着的 agent」和「残留死 socket」。
@@ -497,7 +497,7 @@ final class AgentManager: ObservableObject {
         defer { isAgentOperationInProgress = false }
 
         guard isAgentBinaryPresentInBundle else {
-            agentUserAlert = String(localized: "text.4aa536aa1af7", defaultValue: "应用包内没有可执行的 ahakeyconfig-agent（路径：…/Contents/MacOS/ahakeyconfig-agent）。请确认发版脚本已把该二进制一并打进 .app；仅有主程序时无法安装守护进程。")
+            agentUserAlert = String(localized: "text.4aa536aa1af7", defaultValue: "应用包内没有可执行的 hyperkey-agent（路径：…/Contents/MacOS/hyperkey-agent）。请确认发版脚本已把该二进制一并打进 .app；仅有主程序时无法安装守护进程。")
             return
         }
 
@@ -586,7 +586,7 @@ final class AgentManager: ObservableObject {
             self.isAgentOperationInProgress = false
             self.refresh()
             if !self.isRunning {
-                var m = String(localized: "text.c55df9e454f9", defaultValue: "已执行 launchctl load / start，但尚未检测到 Agent 在运行（未出现 /tmp/ahakey.sock）。\n\n")
+                var m = String(localized: "text.c55df9e454f9", defaultValue: "已执行 launchctl load / start，但尚未检测到 Agent 在运行（未出现 /tmp/hyperkey.sock）。\n\n")
                 if !loadRes.ok && !isBenignLaunchctlLoadMessage(loadRes.mergedOutput) {
                     m += String(localized: "text.62edcb96aff3", defaultValue: "load：\n\(String(describing: loadRes.mergedOutput.isEmpty ? String(localized: "text.8ae64c2c8ce5", defaultValue: "（无输出）") : loadRes.mergedOutput))\n\n")
                 }
@@ -613,7 +613,7 @@ final class AgentManager: ObservableObject {
 
     var logFilePath: String {
         let dir = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/diagnostics")
+            .appendingPathComponent("Library/Application Support/HyperKey/diagnostics")
         try? FileManager.default.createDirectory(atPath: dir.path, withIntermediateDirectories: true)
         return dir.appendingPathComponent("agent.log").path
     }
@@ -821,13 +821,13 @@ final class AgentManager: ObservableObject {
         }
     }
 
-    /// 只读；由 `ahakeyconfig-agent` 在 `PermissionRequest` 与 Cursor 批准类 hook 中写入。
+    /// 只读；由 `hyperkey-agent` 在 `PermissionRequest` 与 Cursor 批准类 hook 中写入。
     func readPermissionRequestLog() -> String {
         (try? String(contentsOfFile: permissionRequestLogPath, encoding: .utf8))
-            ?? String(localized: "text.bdd1bbea1698", defaultValue: "尚无记录。在 Claude 中触发 PermissionRequest，在 Cursor 中让 Agent 调工具/Shell/MCP，或在 Kimi Code CLI 中触发工具调用后，会在此追加带 `ide` / `hookEvent` 的 JSON 行。若始终为空，请确认已安装 Agent、Hooks、蓝牙由 Agent 占用，且 `~/Library/.../AhaKeyConfig/diagnostics/` 可写。")
+            ?? String(localized: "text.bdd1bbea1698", defaultValue: "尚无记录。在 Claude 中触发 PermissionRequest，在 Cursor 中让 Agent 调工具/Shell/MCP，或在 Kimi Code CLI 中触发工具调用后，会在此追加带 `ide` / `hookEvent` 的 JSON 行。若始终为空，请确认已安装 Agent、Hooks、蓝牙由 Agent 占用，且 `~/Library/.../HyperKey/diagnostics/` 可写。")
     }
 
-    /// 只读；由 `ahakeyconfig-agent hook Codex*` 子进程写入，用于判断 Codex 客户端/终端是否真的触发了 hook。
+    /// 只读；由 `hyperkey-agent hook Codex*` 子进程写入，用于判断 Codex 客户端/终端是否真的触发了 hook。
     func readCodexHookLog() -> String {
         (try? String(contentsOfFile: codexHookLogPath, encoding: .utf8))
             ?? String(localized: "text.c1438eaf9aa5", defaultValue: "尚无记录。触发 Codex 后应在此追加 JSON 行。若终端 Codex 有记录、Codex 客户端没有记录，说明客户端未加载当前 `~/.codex/config.toml` hook，通常需要重启 Codex 客户端/新开终端后再测。")
@@ -895,7 +895,7 @@ final class AgentManager: ObservableObject {
 
         settings["hooks"] = hooks
         if saveClaudeSettings(settings) {
-            log.info("Claude hooks 已写入 ahakeyconfig-agent hook 子命令")
+            log.info("Claude hooks 已写入 hyperkey-agent hook 子命令")
             return ""
         }
         return String(localized: "text.672db548d4c5", defaultValue: "Claude Hooks：无法写入 \(String(describing: claudeSettingsPath))。请检查该文件或父目录的权限/只读状态。")
@@ -963,8 +963,8 @@ final class AgentManager: ObservableObject {
         "stop",
     ]
 
-    private let codexHookBlockStart = "# BEGIN AhaKey Codex Hooks"
-    private let codexHookBlockEnd = "# END AhaKey Codex Hooks"
+    private let codexHookBlockStart = "# BEGIN HyperKey Codex Hooks"
+    private let codexHookBlockEnd = "# END HyperKey Codex Hooks"
     private let codexHookEvents: [(event: String, agentEvent: String, timeout: Int)] = [
         ("SessionStart", "CodexSessionStart", 10),
         ("PostToolUse", "CodexPostToolUse", 10),
@@ -974,8 +974,8 @@ final class AgentManager: ObservableObject {
         ("Stop", "CodexStop", 10),
     ]
 
-    private let kimiHookBlockStart = "# BEGIN AhaKey Kimi Hooks"
-    private let kimiHookBlockEnd = "# END AhaKey Kimi Hooks"
+    private let kimiHookBlockStart = "# BEGIN HyperKey Kimi Hooks"
+    private let kimiHookBlockEnd = "# END HyperKey Kimi Hooks"
     private let kimiHookEntries: [(event: String, agentEvent: String, timeout: Int)] = [
         ("Notification", "KimiNotification", 10),
         ("SessionStart", "KimiSessionStart", 10),
@@ -1402,12 +1402,12 @@ final class AgentManager: ObservableObject {
     }
 
     private func patchKimiApprovalPy(atPath path: String) throws -> KimiCliPatchStatus {
-        let marker = "_AHAKEY_SOCKET_PATH = \"/tmp/ahakey.sock\""
+        let marker = "_AHAKEY_SOCKET_PATH = \"/tmp/hyperkey.sock\""
         let helperAnchor = "type Response = Literal[\"approve\", \"approve_for_session\", \"reject\"]\n"
         let helperBlock = """
         type Response = Literal["approve", "approve_for_session", "reject"]
 
-        _AHAKEY_SOCKET_PATH = "/tmp/ahakey.sock"
+        _AHAKEY_SOCKET_PATH = "/tmp/hyperkey.sock"
         _AHAKEY_APPROVAL_CACHE_TTL_S = 0.35
         _ahakey_cache_at = 0.0
         _ahakey_cache_value: dict[str, object] | None = None
@@ -1720,7 +1720,7 @@ final class AgentManager: ObservableObject {
         }
 
         if removedCount == 0 {
-            return String(localized: "text.00430b9bc441", defaultValue: "在 \(String(describing: path)) 中**未发现**包含 `ahakeyconfig-agent` 或 `ahakey-state` 的 `command`。\n\n若 Hook 在**项目级** `.cursor/hooks.json`，请在该仓库内手动删除；本按钮只改用户级 `~/.cursor/hooks.json`。")
+            return String(localized: "text.00430b9bc441", defaultValue: "在 \(String(describing: path)) 中**未发现**包含 `hyperkey-agent` 或 `ahakey-state` 的 `command`。\n\n若 Hook 在**项目级** `.cursor/hooks.json`，请在该仓库内手动删除；本按钮只改用户级 `~/.cursor/hooks.json`。")
         }
 
         if hooks.isEmpty {

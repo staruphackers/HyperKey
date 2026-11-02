@@ -3,7 +3,7 @@ import Foundation
 // 一个插件目录的清单文件（`plugin.json`），决定宿主怎么发现、启动、信任这个插件。
 //
 // 目录约定：
-//   ~/Library/Application Support/AhaKeyConfig/plugins/<id>/plugin.json
+//   ~/Library/Application Support/HyperKey/plugins/<id>/plugin.json
 //
 // 最小示例：
 // ```json

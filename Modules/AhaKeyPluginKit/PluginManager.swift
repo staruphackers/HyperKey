@@ -3,7 +3,7 @@ import Foundation
 // 扫描插件目录、加载 manifest、拉起所有插件，并管它们的生命周期。
 //
 // 默认插件目录：
-//   ~/Library/Application Support/AhaKeyConfig/plugins/<id>/plugin.json
+//   ~/Library/Application Support/HyperKey/plugins/<id>/plugin.json
 //
 // 可通过环境变量 `AHAKEY_PLUGINS_DIR` 临时覆写（调试用）。
 //
@@ -41,7 +41,7 @@ public actor PluginManager {
         }
         return FileManager.default.homeDirectoryForCurrentUser
             .appendingPathComponent(
-                "Library/Application Support/AhaKeyConfig/plugins",
+                "Library/Application Support/HyperKey/plugins",
                 isDirectory: true
             )
     }

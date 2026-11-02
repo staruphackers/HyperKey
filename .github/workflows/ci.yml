@@ -66,8 +66,8 @@ jobs:
         run: |
           app='DerivedData/Build/Products/Release/AhaKey Studio.app'
           codesign --verify --deep --strict "$app"
-          lipo "$app/Contents/MacOS/AhaKeyConfig" -verify_arch arm64 x86_64
-          lipo "$app/Contents/MacOS/ahakeyconfig-agent" -verify_arch arm64 x86_64
+          lipo "$app/Contents/MacOS/HyperKey" -verify_arch arm64 x86_64
+          lipo "$app/Contents/MacOS/hyperkey-agent" -verify_arch arm64 x86_64
           mkdir -p dist
           ditto -c -k --sequesterRsrc --keepParent "$app" dist/AhaKey-Studio-macOS-development.zip
       - uses: actions/upload-artifact@v4

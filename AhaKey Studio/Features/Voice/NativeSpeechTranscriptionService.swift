@@ -720,7 +720,7 @@ final class NativeSpeechTranscriptionService: ObservableObject {
 
     private var diagnosticLogURL: URL {
         let directory = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/diagnostics", isDirectory: true)
+            .appendingPathComponent("Library/Application Support/HyperKey/diagnostics", isDirectory: true)
         return directory.appendingPathComponent("native-speech.log")
     }
 }

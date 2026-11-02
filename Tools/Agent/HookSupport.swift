@@ -2,7 +2,7 @@ import Foundation
 
 enum HookSupport {
     static let permissionLedValue: UInt8 = 1
-    static let socketPath = "/tmp/ahakey.sock"
+    static let socketPath = "/tmp/hyperkey.sock"
     static let stateRequestTimeout: Double = 2.0
     static let permissionRequestTimeout: Double = 5.0
 
@@ -97,8 +97,8 @@ enum HookSupport {
         switchState: Int?
     ) {
         if switchState == nil, reply == nil {
-            let msg = "[ahakey-hook] \(ide) \(hookName): agent 无回包或 Unix socket 失败（/tmp/ahakey.sock 连不上/超时，超时 \(Int(permissionRequestTimeout))s）。"
-                + "请确认 LaunchAgent 里 ahakeyconfig-agent 在跑、且蓝牙已选「由 Agent 占用」并连上键盘。\n"
+            let msg = "[ahakey-hook] \(ide) \(hookName): agent 无回包或 Unix socket 失败（/tmp/hyperkey.sock 连不上/超时，超时 \(Int(permissionRequestTimeout))s）。"
+                + "请确认 LaunchAgent 里 hyperkey-agent 在跑、且蓝牙已选「由 Agent 占用」并连上键盘。\n"
             FileHandle.standardError.write(Data(msg.utf8))
         } else if switchState == nil, reply != nil {
             let msg = "[ahakey-hook] \(ide) \(hookName): 回包无有效 switchState（需 BLE 已连且能读到拨杆 0=自动批准），将按交回用户/终端处理。\n"
@@ -153,7 +153,7 @@ enum HookSupport {
         kimiLeverDebug: [String: Any]? = nil
     ) {
         let dir = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/diagnostics", isDirectory: true)
+            .appendingPathComponent("Library/Application Support/HyperKey/diagnostics", isDirectory: true)
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true, attributes: nil)
         let fileURL = dir.appendingPathComponent("permission-request.log")
 
@@ -200,7 +200,7 @@ enum HookSupport {
         decision: String?
     ) {
         let dir = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/diagnostics", isDirectory: true)
+            .appendingPathComponent("Library/Application Support/HyperKey/diagnostics", isDirectory: true)
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true, attributes: nil)
         let fileURL = dir.appendingPathComponent("codex-hook.log")
 

@@ -179,7 +179,7 @@ If `entrypoint.env` is omitted, the process inherits the host environment. If su
 `PluginManager` scans non-hidden immediate subdirectories of:
 
 ```text
-~/Library/Application Support/AhaKeyConfig/plugins/
+~/Library/Application Support/HyperKey/plugins/
 ```
 
 `AHAKEY_PLUGINS_DIR` replaces this root. Each child directory needs a manifest; placing `plugin.json` directly in the root will not discover it. The current runnable hosts are `Plugin` and `PluginShowcase`; copying a plugin into this directory does not yet enable it in the main desktop app.
@@ -240,7 +240,7 @@ servePlugin(definePlugin({
 }));
 ```
 
-The Swift bridge asks the local agent through `/tmp/ahakey.sock`. It reports `agentReachable: true` when it obtains a numeric switch state; this is not a separate agent-health probe. `0` means automatic approval; a nonzero state means manual approval. `null` means a usable state was not returned and must not be treated as automatic approval. This API reads state; it does not change the lever or approve a tool call.
+The Swift bridge asks the local agent through `/tmp/hyperkey.sock`. It reports `agentReachable: true` when it obtains a numeric switch state; this is not a separate agent-health probe. `0` means automatic approval; a nonzero state means manual approval. `null` means a usable state was not returned and must not be treated as automatic approval. This API reads state; it does not change the lever or approve a tool call.
 
 ## Plugin methods and notifications
 

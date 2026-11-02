@@ -5,7 +5,7 @@ import Foundation
 import os.log
 import UserNotifications
 
-private let log = Logger(subsystem: "lab.jawa.ahakeyconfig", category: "BLE")
+private let log = Logger(subsystem: "tw.xlabs.hyperkey", category: "BLE")
 
 /// 0x83 查询回来的某个 mode 的图片元信息（用 Equatable struct 方便 SwiftUI .onChange 监听）
 struct KeyboardPictureState: Equatable {
@@ -70,7 +70,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
     @Published private(set) var linkDiagnostic: LinkDiagnostic = .idle
     @Published private(set) var oledUploadProgress: OLEDUploadProgress?
     @Published private(set) var isUploadingOLED = false
-    /// 由 ahakeyconfig-agent 写入的当前 IDE hook 状态值（IDEState.rawValue），用于画布 LED 颜色实时还原
+    /// 由 hyperkey-agent 写入的当前 IDE hook 状态值（IDEState.rawValue），用于画布 LED 颜色实时还原
     @Published private(set) var liveIDEStateValue: Int? = nil
     /// Agent 端 BLE 通知缓存的 lightMode/switchState/workMode（agent 占用蓝牙时主 App 自己 BLE 未连，靠这些读到键盘实时状态）
     @Published private(set) var agentLightMode: Int? = nil
@@ -137,7 +137,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
     private var ideStatePollTimer: Timer?
     /// 记住上次连接的 UUID，用于快速重连
     private var lastPeripheralUUID: UUID?
-    /// 为 true 时，本 App 不扫描、不连接、不响应掉线/轮询重连（物理键盘由 `ahakeyconfig-agent` 占用时由 AgentManager 置位）
+    /// 为 true 时，本 App 不扫描、不连接、不响应掉线/轮询重连（物理键盘由 `hyperkey-agent` 占用时由 AgentManager 置位）
     private var suppressAutomaticConnection = false
     /// 防止 onAllCharacteristicsReady 重复触发
     private var didQueryAfterConnect = false
@@ -158,7 +158,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
 
     override init() {
         super.init()
-        let storedOwner = UserDefaults.standard.string(forKey: "lab.jawa.ahakeyconfig.bluetoothConnectionOwner")
+        let storedOwner = UserDefaults.standard.string(forKey: "tw.xlabs.hyperkey.bluetoothConnectionOwner")
         if storedOwner == nil || storedOwner == BluetoothConnectionOwner.agentDaemon.rawValue {
             suppressAutomaticConnection = true
         }
@@ -236,7 +236,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
 
     func connectAutomatically() {
         guard !suppressAutomaticConnection else {
-            // 蓝牙交由 ahakeyconfig-agent 占用，本 App 不直连——这是预期行为，明确标记以免被当成故障。
+            // 蓝牙交由 hyperkey-agent 占用，本 App 不直连——这是预期行为，明确标记以免被当成故障。
             linkDiagnostic = .ownedByAgent
             return
         }
@@ -631,7 +631,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
         commLog.removeAll()
     }
 
-    /// 与内部 `appendLog` 相同（含 `~/Library/.../AhaKeyConfig/diagnostics/ble-comm.log` 与系统日志），供 Studio 等写入调试说明。
+    /// 与内部 `appendLog` 相同（含 `~/Library/.../HyperKey/diagnostics/ble-comm.log` 与系统日志），供 Studio 等写入调试说明。
     func appendCommLogLine(_ message: String, isError: Bool = false) {
         appendLog(message, isError: isError)
     }
@@ -640,7 +640,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
 
     static let logFileURL: URL = {
         let dir = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/diagnostics")
+            .appendingPathComponent("Library/Application Support/HyperKey/diagnostics")
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         return dir.appendingPathComponent("ble-comm.log")
     }()
@@ -752,7 +752,7 @@ final class AhaKeyBLEManager: NSObject, ObservableObject {
 
     private func pollIDEStateFile() {
         let url = FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/AhaKeyConfig/current-ide-state.json")
+            .appendingPathComponent("Library/Application Support/HyperKey/current-ide-state.json")
         guard let data = try? Data(contentsOf: url),
               let obj = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else {
             if liveIDEStateValue != nil { liveIDEStateValue = nil }
@@ -947,14 +947,14 @@ final class SwitchStateNotifier: ObservableObject {
             postNotification(
                 title: String(localized: "text.9a91c43f81bf", defaultValue: "拨杆 → 自动批准"),
                 body: String(localized: "text.522df322a58a", defaultValue: "Kimi：若已安装 AhaKey Kimi Hooks，自动档会直接接管当前会话批准；若刚装完或刚升级 kimi-cli，请先重开一次 kimi。Claude/Cursor/Codex 仍走各自钩子。"),
-                identifier: "lab.jawa.ahakey.switch.auto",
+                identifier: "tw.xlabs.hyperkey.switch.auto",
                 isCritical: true
             )
         } else if switchedToManual {
             postNotification(
                 title: String(localized: "text.dce54dfe9090", defaultValue: "拨杆 → 手动批准"),
                 body: String(localized: "text.f568c84e88be", defaultValue: "Claude / Cursor / Codex：按各自确认链。Kimi：若已安装 AhaKey Kimi Hooks，手动档会直接把当前会话拉回手动批准。"),
-                identifier: "lab.jawa.ahakey.switch.manual",
+                identifier: "tw.xlabs.hyperkey.switch.manual",
                 isCritical: false
             )
         }
@@ -1014,7 +1014,7 @@ enum LinkDiagnostic: Equatable {
     case connected                     // 配置链路 (0x7340) 已连
     case bluetoothOff                  // 系统蓝牙未开启
     case bluetoothUnauthorized         // 未授权蓝牙权限
-    case ownedByAgent                  // BLE 交由 ahakeyconfig-agent 占用（本 App 不直连，属预期）
+    case ownedByAgent                  // BLE 交由 hyperkey-agent 占用（本 App 不直连，属预期）
     case systemConnectedNoConfigLink   // 设备已被系统 / 语音(HID) 链路连接，但 0x7340 配置链路未建立
     case noDeviceFound                 // 未发现设备（未开机 / 不在范围 / 未配对）
 
@@ -1041,7 +1041,7 @@ enum LinkDiagnostic: Equatable {
         case .connected: return String(localized: "text.c275a451175c", defaultValue: "AhaKey 配置链路 (0x7340) 已连接。")
         case .bluetoothOff: return String(localized: "text.24a377674d66", defaultValue: "系统蓝牙未开启。请在「控制中心 / 系统设置 > 蓝牙」打开蓝牙。")
         case .bluetoothUnauthorized: return String(localized: "text.d6514f9bce18", defaultValue: "未授权蓝牙权限。请在「系统设置 > 隐私与安全性 > 蓝牙」中允许 AhaKey Studio。")
-        case .ownedByAgent: return String(localized: "text.821bcb2e4f27", defaultValue: "蓝牙当前交由 ahakeyconfig-agent 占用，本 App 不直接连接（这是预期行为）。配置链路状态请参考 Agent；如需本 App 直连，请在设备信息里把「蓝牙连接」切回本 App。")
+        case .ownedByAgent: return String(localized: "text.821bcb2e4f27", defaultValue: "蓝牙当前交由 hyperkey-agent 占用，本 App 不直接连接（这是预期行为）。配置链路状态请参考 Agent；如需本 App 直连，请在设备信息里把「蓝牙连接」切回本 App。")
         case .systemConnectedNoConfigLink: return String(localized: "text.6dfebf7b3643", defaultValue: "设备已通过系统蓝牙（HID / 语音链路）连接，但 AhaKey 配置服务 0x7340 尚未建立。本 App 正在尝试主动接管该链路；若长时间无效，请在「系统设置 > 蓝牙」忽略此设备后重新配对。")
         case .noDeviceFound: return String(localized: "text.326a0b0bb64e", defaultValue: "未发现 AhaKey 设备。请确认设备已开机、处于蓝牙范围内并已与本机配对。")
         }
@@ -1418,7 +1418,7 @@ extension AhaKeyBLEManager: CBPeripheralDelegate {
 
 extension Notification.Name {
     /// `userInfo["workMode"]` 为 `Int`，与键盘物理档位一致。
-    static let ahaKeyKeyboardWorkModeChanged = Notification.Name("lab.jawa.ahakeyconfig.keyboardWorkModeChanged")
+    static let ahaKeyKeyboardWorkModeChanged = Notification.Name("tw.xlabs.hyperkey.keyboardWorkModeChanged")
 }
 
 // MARK: - Data Extension
