@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import os.log
 
@@ -493,6 +494,7 @@ final class AgentManager: ObservableObject {
 
     func install() {
         agentUserAlert = nil
+        guard confirmHookInstall() else { return }
         isAgentOperationInProgress = true
         defer { isAgentOperationInProgress = false }
 
@@ -517,11 +519,12 @@ final class AgentManager: ObservableObject {
             }
         }
 
-        // 3. 安装 Claude / Cursor / Codex / Kimi hooks（直接指向 agent 二进制 hook 子命令）
+        // 3. HyperKey：一鍵安裝只寫 Claude / Codex 的狀態類 hook（燈號用，不含權限請求）。
+        //    Cursor 的 preToolUse 會直接回 allow／deny、Kimi 會改 default_yolo，改成只能在「設備資訊」個別手動安裝。
         let claudeLine = installClaudeHooks()
-        let cursorLine = installCursorHooks()
+        let cursorLine = ""
         let codexLine = installCodexHooks()
-        let kimiLine = installKimiHooks()
+        let kimiLine = ""
 
         refresh()
 
@@ -539,6 +542,17 @@ final class AgentManager: ObservableObject {
         } else {
             agentUserAlert = tail.isEmpty ? String(localized: "text.1d53fec8eb98", defaultValue: "安装完成。") : tail
         }
+    }
+
+    /// HyperKey：寫入任何 AI 工具設定前，先讓使用者看到會改哪些檔案。
+    private func confirmHookInstall() -> Bool {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        alert.messageText = String(localized: "hyperkey.install.confirm.title", defaultValue: "要安装 HyperKey 后台程序与灯号 Hook 吗？")
+        alert.informativeText = String(localized: "hyperkey.install.confirm.body", defaultValue: "将写入：\n• ~/Library/LaunchAgents/tw.xlabs.hyperkey.agent.plist\n• ~/.claude/settings.json（状态类 Hook，不含权限请求）\n• ~/.codex/config.toml（同上）\n\n不会自动放行任何 AI 工具权限。")
+        alert.addButton(withTitle: String(localized: "hyperkey.install.confirm.ok", defaultValue: "安装"))
+        alert.addButton(withTitle: String(localized: "hyperkey.install.confirm.cancel", defaultValue: "取消"))
+        return alert.runModal() == .alertFirstButtonReturn
     }
 
     func uninstall(bleManager: AhaKeyBLEManager? = nil) {
@@ -838,7 +852,7 @@ final class AgentManager: ObservableObject {
     /// Claude Code 支持的 hook 事件（和 HookClient.eventMap 对齐）
     private let hookEvents: [String] = [
         "Notification",
-        "PermissionRequest",
+        // HyperKey：不安裝 PermissionRequest，撥桿不能代替使用者放行。
         "PreToolUse",
         "PostToolUse",
         "Stop",
@@ -969,7 +983,6 @@ final class AgentManager: ObservableObject {
         ("SessionStart", "CodexSessionStart", 10),
         ("PostToolUse", "CodexPostToolUse", 10),
         ("PreToolUse", "CodexPreToolUse", 20),
-        ("PermissionRequest", "CodexPermissionRequest", 20),
         ("UserPromptSubmit", "CodexUserPromptSubmit", 10),
         ("Stop", "CodexStop", 10),
     ]

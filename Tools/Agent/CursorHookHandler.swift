@@ -7,7 +7,7 @@ enum CursorHookHandler {
         let request: [String: Any] = ["cmd": "permission", "value": Int(HookSupport.permissionLedValue)]
         let reply = HookSupport.sendJsonRequest(request, timeout: HookSupport.permissionRequestTimeout)
         let switchState = HookSupport.intValue(reply?["switchState"])
-        let isAuto = switchState == 0
+        let isAuto = HookSupport.effectiveAuto(switchState)
 
         if isAuto {
             // 自动模式：返回 allow，让操作直接执行
@@ -31,7 +31,7 @@ enum CursorHookHandler {
             )
         }
 
-        if let s = switchState {
+        if HookSupport.hyperKeyAllowsAutoApprove, let s = switchState {
             let auto = s == 0
             CursorCliLeverSync.apply(switchStateAuto: auto)
             CursorPermissionsJsonLeverSync.apply(switchStateAuto: auto)

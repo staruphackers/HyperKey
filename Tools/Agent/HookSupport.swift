@@ -1,6 +1,15 @@
 import Foundation
 
 enum HookSupport {
+    /// HyperKey 安全政策：撥桿「自動」永遠不代替使用者放行 AI 工具權限，
+    /// 也不改寫 Codex／Cursor／Kimi 的自動批准設定。要恢復原廠行為必須改這裡並重新編譯。
+    static let hyperKeyAllowsAutoApprove = false
+
+    /// 撥桿狀態轉成「是否自動放行」；受 `hyperKeyAllowsAutoApprove` 管制。
+    static func effectiveAuto(_ switchState: Int?) -> Bool {
+        hyperKeyAllowsAutoApprove && switchState == 0
+    }
+
     static let permissionLedValue: UInt8 = 1
     static let socketPath = "/tmp/hyperkey.sock"
     static let stateRequestTimeout: Double = 2.0

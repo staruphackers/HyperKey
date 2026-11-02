@@ -121,6 +121,126 @@
         }
       }
     },
+    "hyperkey.install.confirm.body": {
+      "comment": "HyperKey install confirmation body. Keep file paths unchanged.",
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将写入：\n• ~/Library/LaunchAgents/tw.xlabs.hyperkey.agent.plist\n• ~/.claude/settings.json（状态类 Hook，不含权限请求）\n• ~/.codex/config.toml（同上）\n\n不会自动放行任何 AI 工具权限。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This will write:\n• ~/Library/LaunchAgents/tw.xlabs.hyperkey.agent.plist\n• ~/.claude/settings.json (status hooks only, no permission requests)\n• ~/.codex/config.toml (same)\n\nAI tool permissions are never approved automatically."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次のファイルに書き込みます：\n• ~/Library/LaunchAgents/tw.xlabs.hyperkey.agent.plist\n• ~/.claude/settings.json（ステータス用フックのみ、権限リクエストは含みません）\n• ~/.codex/config.toml（同上）\n\nAI ツールの権限が自動で許可されることはありません。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將寫入：\n• ~/Library/LaunchAgents/tw.xlabs.hyperkey.agent.plist\n• ~/.claude/settings.json（狀態類 Hook，不含權限請求）\n• ~/.codex/config.toml（同上）\n\n不會自動放行任何 AI 工具權限。"
+          }
+        }
+      }
+    },
+    "hyperkey.install.confirm.cancel": {
+      "comment": "Cancel button.",
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キャンセル"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        }
+      }
+    },
+    "hyperkey.install.confirm.ok": {
+      "comment": "Confirm button.",
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インストール"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安裝"
+          }
+        }
+      }
+    },
+    "hyperkey.install.confirm.title": {
+      "comment": "HyperKey install confirmation dialog title.",
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要安装 HyperKey 后台程序与灯号 Hook 吗？"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install the HyperKey background agent and status-light hooks?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HyperKey のバックグラウンドエージェントとステータスライト用フックをインストールしますか？"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要安裝 HyperKey 背景程式與燈號 Hook 嗎？"
+          }
+        }
+      }
+    },
     "studio.key.title": {
       "comment": "Visible hardware key label. Argument 1: physical key number (1–4), not a count. Firmware names remain unchanged.",
       "extractionState": "manual",

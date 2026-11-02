@@ -14,7 +14,7 @@ enum KimiHookHandler {
         let request: [String: Any] = ["cmd": "permission", "value": Int(HookSupport.permissionLedValue)]
         let reply = HookSupport.sendJsonRequest(request, timeout: HookSupport.permissionRequestTimeout)
         let switchState = HookSupport.intValue(reply?["switchState"])
-        let isAuto = switchState == 0
+        let isAuto = HookSupport.effectiveAuto(switchState)
 
         KimiHookDebugLog.append(event: "kimi_PreToolUse_agent_reply", details: [
             "agentReplyNil": reply == nil,
@@ -47,7 +47,7 @@ enum KimiHookHandler {
             "kimiRunnerNote": "upstream_kimi_hooks_runner_only_handles_permissionDecision_deny",
         ])
         var leverSnapshotForLog = kimiProbeInitial
-        if switchState == nil {
+        if switchState == nil || !HookSupport.hyperKeyAllowsAutoApprove {
             KimiHookDebugLog.stderrLine("no switchState from agent → skipped default_yolo sync; kimiPreTool=\(kimiPreToolDecision); check BLE/agent")
         } else {
             KimiConfigLeverSync.apply(switchStateAuto: isAuto)

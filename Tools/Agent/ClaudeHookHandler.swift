@@ -7,7 +7,7 @@ enum ClaudeHookHandler {
         let request: [String: Any] = ["cmd": "permission", "value": Int(HookSupport.permissionLedValue)]
         let reply = HookSupport.sendJsonRequest(request, timeout: HookSupport.permissionRequestTimeout)
         let switchState = HookSupport.intValue(reply?["switchState"])
-        let isAuto = switchState == 0
+        let isAuto = HookSupport.effectiveAuto(switchState)
         let behavior: String
 
         if isAuto {

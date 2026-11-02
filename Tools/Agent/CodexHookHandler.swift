@@ -14,7 +14,7 @@ enum CodexHookHandler {
         // 必须单独发 `status` 查询拨杆的真实状态。
         if stateValue == 4 {
             let statusReply = HookSupport.sendJsonRequest(["cmd": "status"], timeout: HookSupport.stateRequestTimeout)
-            if let s = HookSupport.intValue(statusReply?["switchState"]) {
+            if HookSupport.hyperKeyAllowsAutoApprove, let s = HookSupport.intValue(statusReply?["switchState"]) {
                 CodexConfigLeverSync.apply(switchStateAuto: s == 0)
             }
         }
@@ -37,9 +37,9 @@ enum CodexHookHandler {
         let request: [String: Any] = ["cmd": "permission", "value": Int(HookSupport.permissionLedValue)]
         let reply = HookSupport.sendJsonRequest(request, timeout: HookSupport.permissionRequestTimeout)
         let switchState = HookSupport.intValue(reply?["switchState"])
-        let isAuto = switchState == 0
+        let isAuto = HookSupport.effectiveAuto(switchState)
 
-        if let s = switchState {
+        if HookSupport.hyperKeyAllowsAutoApprove, let s = switchState {
             CodexConfigLeverSync.apply(switchStateAuto: s == 0)
         }
 
